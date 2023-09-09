@@ -1,6 +1,6 @@
 # https://flask.palletsprojects.com/en/2.3.x/quickstart/#a-minimal-application
 import os
-from flask import Flask
+from flask import Flask, render_template
 # capital F of Flask as its a class name
 
 # instace of class is app
@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "Hello, World"
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(
