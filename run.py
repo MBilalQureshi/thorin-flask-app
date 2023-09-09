@@ -11,6 +11,7 @@ app = Flask(__name__)
 # Effectively, a decorator is a way of wrapping functions.
 
 @app.route("/")
+# below function is also know as view
 def index():
     return render_template("index.html")
 
@@ -22,7 +23,13 @@ def about():
 
 @app.route("/contact")
 def contact():
-    return render_template("about.html")
+    return render_template("contact.html")
+
+
+@app.route("/careers")
+def careers():
+    return render_template("careers.html")
+
 
 if __name__ == "__main__":
     app.run(
