@@ -29,6 +29,17 @@
                 </div>
                 <div class="col-md-7">
                     <h3><a href="/about/{{ member.url }}">{{loop.index}}. {{member.name}}</a></h3>
+                    <!-- We could have just used the member.name in our href links, but added the lower() filter
+                    to make everything lowercase, and the replace() filter to convert any spaces to minus symbols 
+                    The reason I'm not going to use this method, is because if you try to test it out with
+                    Thorin's link, you'll get an error.
+                    This is because his full member.name is Thorin Oakenshield, but we've set member.url to just
+                    'thorin'.
+                    You would need to modify the Python functionality to look at the member.name instead of the
+                    member.url, and also use the replace and lower methods there to get the function setup properly.
+                    This was purely just to demonstrate some of the built-in Jinja filters that you could
+                    use.-->
+                    <!-- <h3><a href="/about/,,,{.{,, member.name|replace(' ','-')|replace('&','and')|replace('\','')|lower }}">,{,{,loop.index,}.}. ,{,{,member.name,},},</a></h3> -->
                     <p>{{member.description}}</p>
                 </div>
             
