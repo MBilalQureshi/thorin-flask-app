@@ -24,9 +24,18 @@ def about():
         data = json.load(json_data)
     return render_template("about.html", page_title="About", company= data)
 
+
 @app.route("/about/<member_name>")
+# member_name is taken from above as an argument and the value that's inside it comes from about.html -> href link member.url ->json file
 def about_member(member_name):
-    return "<h1>" + member_name + "</h1>"
+    # return "<h1>" + member_name + "</h1>"
+    member = {}
+    with open("data/company.json","r") as json_data:
+        data = json.load(json_data)
+        for obj in data:
+            if obj["url"] == member_name:
+                member = obj
+    return "<h1>" + member["name"] + "</h1>"
 
 @app.route("/contact")
 def contact():
