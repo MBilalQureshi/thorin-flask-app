@@ -1,7 +1,10 @@
 # https://flask.palletsprojects.com/en/2.3.x/quickstart/#a-minimal-application
+# The first thing we need to do, is import the 'request' library from Flask.
+# Request is going to handle things like finding out what method we used, and it will also
+# contain our form object when we've posted it.
 import json
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 # capital F of Flask as its a class name
 
 # instace of class is app
@@ -41,6 +44,10 @@ def about_member(member_name):
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
+    if request.method == "POST":
+        # print(request.form)
+        # print(request.form.get("name")) better option tha below
+        print(request.form["email"])
     return render_template("contact.html", page_title="Contact Us")
 
 
